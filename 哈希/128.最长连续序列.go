@@ -7,6 +7,7 @@ func longestConsecutive(nums []int) int {
 	}
 	m := len(has)
 	ans := 0
+	// 枚举所有数
 	for x := range has {
 		if _, ok := has[x-1]; ok {
 			continue
