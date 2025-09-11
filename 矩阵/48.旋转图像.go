@@ -12,3 +12,26 @@ func rotate(matrix [][]int) {
 		}
 	}
 }
+
+// 先进行转置，再进行每行的翻转
+func rotate(matrix [][]int) {
+	m := len(matrix)
+
+	// 1. Transpose the matrix
+	for i := 0; i < m; i++ {
+		for j := 0; j < i; j++ {
+			matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+		}
+	}
+
+	// 2. Reverse each row
+	for i := 0; i < m; i++ {
+		l, r := 0, m-1
+		for l < r {
+			// Corrected: Swap elements within the i-th row
+			matrix[i][l], matrix[i][r] = matrix[i][r], matrix[i][l]
+			l++
+			r--
+		}
+	}
+}
